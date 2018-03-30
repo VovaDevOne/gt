@@ -1,48 +1,48 @@
 class PostsController < ApplicationController
 
+	before_action :set_post, only: [ :show, :edit, :update, :destroy ]
+
 	def index
 		@posts = Post.all
 	end
 
 	def show
-		@post = Post.find(params[:id])
 	end
 
 	def new
+		@post = Post.new
 	end
 
 	def create
 		@post = Post.new(post_params)
-
 		if @post.save
-			redirect_to @post
+			redirect_to @post, success: 'Стаття успішно добавлена'
 		else
-			render action: 'new'
+			render :new, danger: 'Стаття не добавлена'
 		end
 	end
 
 	def edit
-		@post = Post.find(params[:id])
 	end
 
 	def update
-		@post = Post.find(params[:id])
-
-		if @post.update(post_params)
-			redirect_to @post
+		if @post.update_attributes(post_params)
+			redirect_to @post, success: 'Стаття успішно оновлена'
 		else
-			render action: 'edit'
+			render :edit, danger: 'Стаття не оновлена'
 		end
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
 		@post.destroy
-
-		redirect_to posts_path
+		redirect_to posts_path, success: 'Стаття успішно видалена'
 	end
 
 	private
+
+	def set_post
+		@post = Post.find(params[:id])
+	end
 
 	def post_params
 		params.require(:post).permit(:title, :summary, :body)
