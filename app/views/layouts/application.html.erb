@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GTest</title>
+    <title>Blog</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,44 @@
   </head>
 
   <body>
-    <%= yield %>
+  
+	  <!--<div class="container">
+	  	<nav class="nav navbar-light bg-faded">
+		    <ul class="nav navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="<%= posts_path %>">Статті</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#">Контакти</a>
+		      </li>
+		    </ul>
+		    <%= link_to 'Нова стаття', new_post_path, class: 'btn btn-outline-primary pull-xs-right' %>
+	    </nav>
+	  </div>-->
+	  <div class="container">
+	  <nav class="navbar navbar-inverse bg-inverse">
+	  	<div class="container-fluid">
+	  		<div class="navbar-header">
+	  		<a class="navbar-brand" href="<%= posts_path %>">Статті</a>
+	  		<a class="navbar-brand" href="#">Контакти</a>
+      		<a class="btn btn-default" href="<%= new_post_path %>" role="button">Нова стаття</a>
+	  		</div>
+	  	</div>
+	  </nav>
+	  </div>
+
+	  <div class="container main">
+	  	<div class="row">
+	  		<div class="col-md-12">
+	  			<% flash.each do |name, message| %>
+	  				<div class="alert alert-<%= name %>">
+	  					<%= message %>
+	  				</div>
+	  			<% end %>
+	  		</div>
+	  	</div>
+		<%= yield %>
+	  </div>
+
   </body>
 </html>
