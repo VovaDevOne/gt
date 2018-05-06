@@ -2,6 +2,9 @@ ua:
   common:
     errors: 'При заповненні виникли проблеми'
     back: 'Назад'
+  will_paginate:
+    previous_label: '&larr; Туда'
+    next_label: 'Сюда &rarr;'
   posts:
     index:
       title: 'Статті'
@@ -12,3 +15,13 @@ ua:
     form:
       submit:
         '%{action} статтю'
+  categories:
+    index:
+      title: 'Категорії'
+    new:
+      title: 'Нова категорія'
+    edit:
+      title: 'Редагування категорії'
+    form:
+      submit:
+        '%{action} категорію'

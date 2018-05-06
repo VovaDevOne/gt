@@ -18,7 +18,8 @@ class PostsController < ApplicationController
 		if @post.save
 			redirect_to @post, success: 'Стаття успішно добавлена'
 		else
-			render :new, danger: 'Стаття не добавлена'
+			flash.now[:danger] = 'Стаття не добавлена'
+			render :new
 		end
 	end
 
@@ -29,7 +30,8 @@ class PostsController < ApplicationController
 		if @post.update_attributes(post_params)
 			redirect_to @post, success: 'Стаття успішно оновлена'
 		else
-			render :edit, danger: 'Стаття не оновлена'
+			flash.now[:danger] = 'Стаття не добавлена'
+			render :edit
 		end
 	end
 
@@ -45,7 +47,7 @@ class PostsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :summary, :body, :image, :all_tags)
+		params.require(:post).permit(:title, :summary, :body, :image, :all_tags, :category_id)
 	end
 
 end
