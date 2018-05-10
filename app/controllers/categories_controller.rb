@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
 	before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -11,6 +12,7 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    @categories = Category.all.order(:name)
   end
 
   def create
@@ -25,6 +27,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @categories = Category.where("id != #{@category.id}").order(:name)
   end
 
   def update

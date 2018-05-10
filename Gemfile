@@ -5,7 +5,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'pg', '~> 0.18'
+gem 'bootstrap', '~> 4.1.1'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 gem 'trix'
@@ -13,6 +17,9 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem 'jquery-rails'
 gem 'ancestry'
+gem 'devise'
+gem 'rails_admin', '~> 1.3'
+gem 'font-awesome-sass', '~> 4.4.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -22,7 +29,7 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+# gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -57,6 +64,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "letter_opener"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
